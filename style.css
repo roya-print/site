@@ -115,3 +115,7 @@ body.ct{background:#EEEEEE}
 .inl.note>span{flex:0 0 auto;text-align:left;text-align-last:auto}
 .inl textarea{resize:vertical;min-height:90px;line-height:1.7}
 @media (max-width:900px){.specs{grid-template-columns:1fr;gap:20px}}
+.f-status{margin:0;min-height:1.6em;font-size:16px;letter-spacing:.04em;line-height:1.7}
+.f-status.ok{color:#1f6b35}
+.f-status.err{color:#a3261c}
+.send:disabled{opacity:.5;cursor:default}

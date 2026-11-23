@@ -35,7 +35,11 @@
         <div><dt>E-mail</dt><dd><a href="mailto:roya@royaprint.com">roya@royaprint.com</a></dd></div>
       </dl>
     </section>
-    <form class="ct-form" id="contact-form" action="mailto:roya@royaprint.com" method="post" enctype="text/plain">
+    <form class="ct-form" id="contact-form" action="https://api.web3forms.com/submit" method="post">
+      <input type="hidden" name="access_key" value="f1796140-19bc-48fb-af01-e864ad84bfde">
+      <input type="hidden" name="subject" value="羅雅印刷網站｜新的需求">
+      <input type="hidden" name="from_name" value="羅雅印刷網站">
+      <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none">
       <div class="f2">
         <label class="fld"><span>聯絡人 *</span><input name="name" required placeholder="王小明"></label>
         <label class="fld"><span>公司 / 品牌</span><input name="company" placeholder="品牌名稱"></label>
@@ -46,16 +50,26 @@
       <div class="specs"><label class="inl"><span>印刷品尺寸：</span><input name="size"></label><label class="inl"><span>單本材料總量：</span><input name="total"></label><label class="inl"><span>內貼材料尺寸：</span><input name="insert"></label><label class="inl"><span>印刷數量：</span><input name="qty"></label><label class="inl"><span>材料厚度：</span><input name="thick"></label><label class="inl"><span>實際交件數量：</span><input name="deliver"></label></div>
       <label class="inl note"><span>備註：</span><textarea name="message" rows="3"></textarea></label>
       <button class="send" type="submit">送出需求 <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h20M15 1l5 5-5 5"/></svg></button>
+      <p class="f-status" id="f-status" role="status" aria-live="polite"></p>
     </form>
   </div>
 </main>
 <script>
-document.getElementById('contact-form').addEventListener('submit',function(e){
-  e.preventDefault();var f=new FormData(this),g=function(k){return f.get(k)||''};
-  var L=[['聯絡人','name'],['公司/品牌','company'],['Email','email'],['電話','phone'],['需求類型','type'],['印刷品尺寸','size'],['單本材料總量','total'],['內貼材料尺寸','insert'],['印刷數量','qty'],['材料厚度','thick'],['實際交件數量','deliver']];
-  var body=L.map(function(p){return p[0]+'：'+g(p[1])}).join('\n')+'\n\n備註：\n'+g('message');
-  location.href='mailto:roya@royaprint.com?subject='+encodeURIComponent('網站需求｜'+g('name'))+'&body='+encodeURIComponent(body);
-});
+(function(){
+  var form=document.getElementById('contact-form'),st=document.getElementById('f-status'),btn=form.querySelector('.send');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    st.className='f-status';st.textContent='送出中…';btn.disabled=true;
+    fetch(form.action,{method:'POST',headers:{'Accept':'application/json'},body:new FormData(form)})
+      .then(function(r){return r.json()})
+      .then(function(d){
+        if(d.success){form.reset();st.className='f-status ok';st.textContent='已收到您的需求，我們會儘快與您聯繫。';}
+        else{throw new Error(d.message||'fail')}
+      })
+      .catch(function(){st.className='f-status err';st.textContent='送出失敗，請稍後再試，或直接來信 roya@royaprint.com、來電 0955811858。';})
+      .then(function(){btn.disabled=false});
+  });
+})();
 </script>
 
 
