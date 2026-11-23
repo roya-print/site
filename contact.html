@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>聯絡我們｜羅雅印刷</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="pb ct">
+<header class="site-header">
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt="羅雅印刷標誌"><span>羅雅印刷</span></a>
+  <nav class="site-nav" aria-label="主選單">
+    <a href="index.html">首頁</a>
+    <div class="dd"><a href="printing-binding.html">印刷及裝訂</a>
+      <div class="dd-m"><a href="printing-binding.html#offset">平版印刷</a><a href="printing-binding.html#foil-emboss">燙金及壓凹凸</a><a href="printing-binding.html#screen">網版印刷</a><a href="printing-binding.html#binding">裝訂及配件</a></div></div>
+    <div class="dd"><a href="material-processing.html">材料加工</a>
+      <div class="dd-m"><a href="material-processing.html#cut-diecut">裁切｜軋型</a><a href="material-processing.html#adhesive-lamination">背膠｜粘貼</a><a href="material-processing.html#color-card">色卡訂製</a></div></div>
+    <a href="about.html">關於羅雅</a>
+    <a class="boxed" href="contact.html">聯絡我們</a>
+  </nav>
+</header>
+
+<main class="ct-main">
+  <div class="ct-grid">
+    <section class="ct-left">
+      <div class="ct-eyebrow">REQUEST A PROTOTYPE</div>
+      <h1>先做一本，<br>再談量產。</h1>
+      <p>告訴我們您的想法，或是點選右邊的表格選項，我們會儘快報價，先讓您考慮預算增減。</p>
+      <dl class="ct-info">
+        <div><dt>服務</dt><dd>設計｜打樣｜印刷｜加工</dd></div>
+        <div><dt>電話</dt><dd><a href="tel:0955811858">0955811858</a>｜<a href="tel:0424792678">04 2479 2678</a></dd></div>
+        <div><dt>地址</dt><dd>臺中市南屯區永春東二路 100 巷 17 號</dd></div>
+        <div><dt>E-mail</dt><dd><a href="mailto:roya@royaprint.com">roya@royaprint.com</a></dd></div>
+      </dl>
+    </section>
+    <form class="ct-form" id="contact-form" action="mailto:roya@royaprint.com" method="post" enctype="text/plain">
+      <div class="f2">
+        <label class="fld"><span>聯絡人 *</span><input name="name" required placeholder="王小明"></label>
+        <label class="fld"><span>公司 / 品牌</span><input name="company" placeholder="品牌名稱"></label>
+        <label class="fld"><span>EMAIL *</span><input type="email" name="email" required placeholder="name@company.com"></label>
+        <label class="fld"><span>電話</span><input type="tel" name="phone" placeholder="0912 345 678"></label>
+      </div>
+      <div class="fgrp"><div class="flabel">需求類型</div><div class="chips"><label class="chip"><input type="radio" name="type" value="活頁夾" checked><span>活頁夾</span></label><label class="chip"><input type="radio" name="type" value="單張｜對折樣品冊"><span>單張｜對折樣品冊</span></label><label class="chip"><input type="radio" name="type" value="單張｜3折以上樣品冊"><span>單張｜3折以上樣品冊</span></label><label class="chip"><input type="radio" name="type" value="布樣掛冊｜掛卡"><span>布樣掛冊｜掛卡</span></label><label class="chip"><input type="radio" name="type" value="材料代工"><span>材料代工</span></label><label class="chip"><input type="radio" name="type" value="設計製稿"><span>設計製稿</span></label></div></div>
+      <div class="specs"><label class="inl"><span>印刷品尺寸：</span><input name="size"></label><label class="inl"><span>單本材料總量：</span><input name="total"></label><label class="inl"><span>內貼材料尺寸：</span><input name="insert"></label><label class="inl"><span>印刷數量：</span><input name="qty"></label><label class="inl"><span>材料厚度：</span><input name="thick"></label><label class="inl"><span>實際交件數量：</span><input name="deliver"></label></div>
+      <label class="inl note"><span>備註：</span><textarea name="message" rows="3"></textarea></label>
+      <button class="send" type="submit">送出需求 <svg width="22" height="12" viewBox="0 0 22 12" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M0 6h20M15 1l5 5-5 5"/></svg></button>
+    </form>
+  </div>
+</main>
+<script>
+document.getElementById('contact-form').addEventListener('submit',function(e){
+  e.preventDefault();var f=new FormData(this),g=function(k){return f.get(k)||''};
+  var L=[['聯絡人','name'],['公司/品牌','company'],['Email','email'],['電話','phone'],['需求類型','type'],['印刷品尺寸','size'],['單本材料總量','total'],['內貼材料尺寸','insert'],['印刷數量','qty'],['材料厚度','thick'],['實際交件數量','deliver']];
+  var body=L.map(function(p){return p[0]+'：'+g(p[1])}).join('\n')+'\n\n備註：\n'+g('message');
+  location.href='mailto:roya@royaprint.com?subject='+encodeURIComponent('網站需求｜'+g('name'))+'&body='+encodeURIComponent(body);
+});
+</script>
+
+
+<footer class="site-footer" id="contact">
+  <div class="inner">
+    <div class="name">羅雅印刷事業有限公司</div>
+    <div class="row"><span>臺中市南屯區永春東二路100巷17號</span><i></i><a href="tel:0955811858">0955-811858</a><i></i><a href="mailto:roya@royaprint.com">roya@royaprint.com</a></div>
+  </div>
+</footer>
+</body>
+</html>
