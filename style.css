@@ -66,13 +66,12 @@ body.pb{background:#F5F5F5}
 .a-copy p{margin:0;max-width:30em;font-size:17px;line-height:2.1;letter-spacing:.04em;color:#333}
 .a-img{position:relative;min-height:420px}
 .a-img .ph{position:absolute;inset:0;aspect-ratio:auto;border:0;background:#1d1d1f}
-.a-img::before{content:"";position:absolute;left:0;top:0;bottom:0;width:22%;background:linear-gradient(90deg,#F5F5F5,rgba(245,245,245,0));z-index:2;pointer-events:none}
 .a-tag{position:absolute;right:32px;bottom:24px;z-index:3;font-size:12px;letter-spacing:.3em;color:rgba(255,255,255,.6)}
 .a-more{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:72px;max-width:1400px;margin:0 auto;padding:72px 3.2vw 96px;border-top:1px solid #9A9A9A}
 .a-col h2{margin:0 0 20px;font-size:22px;font-weight:900;letter-spacing:.06em}
 .a-col ul{margin:0;padding-left:1.2em;font-size:15px;line-height:1.9;letter-spacing:.04em}
 .a-col li{margin-bottom:8px}
-@media (max-width:900px){.a-hero{grid-template-columns:1fr;min-height:0}.a-img{order:-1;min-height:300px}.a-img::before{display:none}.a-copy{padding:40px 3.2vw}.a-copy h1{margin:48px 0 24px}.a-more{grid-template-columns:1fr;gap:40px;padding:48px 3.2vw 72px}}
+@media (max-width:900px){.a-hero{grid-template-columns:1fr;min-height:0}.a-img{order:-1;min-height:300px}.a-copy{padding:40px 3.2vw}.a-copy h1{margin:48px 0 24px}.a-more{grid-template-columns:1fr;gap:40px;padding:48px 3.2vw 72px}}
 
 /* 聯絡我們 */
 body.ct{background:#EEEEEE}
@@ -119,3 +118,16 @@ body.ct{background:#EEEEEE}
 .f-status.ok{color:#1f6b35}
 .f-status.err{color:#a3261c}
 .send:disabled{opacity:.5;cursor:default}
+.ph img{width:100%;height:100%;object-fit:cover;display:block}
+
+/* 關於羅雅：形象圖淡入輪播 */
+.a-slides{overflow:hidden}
+.a-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:aFade 21s infinite}
+.a-slides .s1{animation-delay:0s}
+.a-slides .s2{animation-delay:7s}
+.a-slides .s3{animation-delay:14s}
+@keyframes aFade{0%{opacity:0}6%{opacity:1}33.3%{opacity:1}39.3%{opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.a-slides img{animation:none}.a-slides .s1{opacity:1}}
+.a-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,0));z-index:2;pointer-events:none}
+.a-tag{color:rgba(255,255,255,.85)}
+.a-slides img{object-position:center}
