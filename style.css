@@ -168,3 +168,10 @@ html.lat .specs{gap:22px 40px}
 @media (max-width:520px){.chips{grid-template-columns:minmax(0,1fr)}}
 html:not([data-l="zh"]) .a-copy h1,html:not([data-l="zh"]) .ct-left h1{font-size:clamp(28px,3.2vw,50px)}
 a.dot{cursor:pointer;color:inherit;text-decoration:none}
+/* 首頁圖標：灰色圓放大一點，文字限制在圓內 */
+.dot .tx{left:-7%;top:-7%;right:-7%;bottom:-7%;padding:15%;overflow-wrap:anywhere;hyphens:auto;word-break:normal}
+html:not([data-l="zh"]) .dot .tx{padding:14%}
+@media (max-width:800px){
+  .dot .tx,html:not([data-l="zh"]) .dot .tx{left:50%;top:108%;right:auto;bottom:auto;transform:translateX(-50%);width:max-content;max-width:150px;border-radius:6px;padding:5px 9px;font-size:11px;line-height:1.3;letter-spacing:0;overflow-wrap:normal;z-index:9}
+  .dot:hover,.dot:focus{transform:scale(1.08)}
+}
