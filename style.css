@@ -123,11 +123,48 @@ body.ct{background:#EEEEEE}
 /* 關於羅雅：形象圖淡入輪播 */
 .a-slides{overflow:hidden}
 .a-slides img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;animation:aFade 21s infinite}
-.a-slides .s1{animation-delay:0s}
-.a-slides .s2{animation-delay:7s}
-.a-slides .s3{animation-delay:14s}
+.a-slides .s1{animation-delay:-1.5s}
+.a-slides .s2{animation-delay:5.5s}
+.a-slides .s3{animation-delay:12.5s}
 @keyframes aFade{0%{opacity:0}6%{opacity:1}33.3%{opacity:1}39.3%{opacity:0}100%{opacity:0}}
 @media (prefers-reduced-motion:reduce){.a-slides img{animation:none}.a-slides .s1{opacity:1}}
 .a-img::after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(0deg,rgba(0,0,0,.45),rgba(0,0,0,0));z-index:2;pointer-events:none}
 .a-tag{color:rgba(255,255,255,.85)}
 .a-slides img{object-position:center}
+
+/* 多語言 */
+.lang .dd-m{left:auto;right:-24px}
+.lang>a{gap:8px}
+.lang>a svg{display:block;flex:none}
+.lang .dd-m a[aria-current="true"]{font-weight:700}
+html[data-l="ja"] body,html[data-l="ja"] input,html[data-l="ja"] textarea,html[data-l="ja"] button{font-family:"Noto Sans JP","Noto Sans TC","Hiragino Sans","Yu Gothic","Meiryo",sans-serif}
+html[data-l="ko"] body,html[data-l="ko"] input,html[data-l="ko"] textarea,html[data-l="ko"] button{font-family:"Noto Sans KR","Noto Sans TC","Malgun Gothic","Apple SD Gothic Neo",sans-serif}
+html.lat body,html.lat input,html.lat textarea,html.lat button{font-family:"Noto Sans","Noto Sans TC","Segoe UI",Arial,sans-serif}
+/* 日、韓、拉丁語系：標題不要比中文大，字距收斂 */
+html:not([data-l="zh"]) .a-copy h1,html:not([data-l="zh"]) .ct-left h1{font-size:clamp(30px,3.6vw,56px);letter-spacing:0;line-height:1.25}
+html:not([data-l="zh"]) .page h1{letter-spacing:0}
+html[data-l="ja"] .site-nav,html[data-l="ko"] .site-nav{letter-spacing:.08em;gap:30px}
+html.lat .site-nav{letter-spacing:.02em;gap:26px;font-size:14px}
+html.lat .dd-m a{letter-spacing:.01em}
+html.lat .grp h2,html.lat .card figcaption,html.lat .a-col h2,html.lat .a-col ul,html.lat .a-copy p,html.lat .ct-left p,html.lat .f-status{letter-spacing:0}
+html.lat .a-copy p,html.lat .ct-left p{font-size:16px;line-height:1.85}
+html.lat .a-eyebrow,html.lat .ct-eyebrow,html.lat .fld>span,html.lat .flabel,html.lat .ct-info dt{letter-spacing:.08em}
+html.lat .inl>span{flex:0 0 11.5em;white-space:normal;text-align:left;text-align-last:auto;letter-spacing:0;font-size:15px;line-height:1.35}
+html[data-l="ja"] .inl>span,html[data-l="ko"] .inl>span{flex-basis:8.6em;letter-spacing:.04em;font-size:15px}
+html:not([data-l="zh"]) .dot .tx{font-size:clamp(7px,.66cqw,12px);letter-spacing:0;padding:9%;line-height:1.25}
+html.lat .send{letter-spacing:.04em}
+html:not([data-l="zh"]) .ct-info dd{letter-spacing:0}
+html.lat .brand span{letter-spacing:0}
+/* 多語言：避免長文字撐破表單 */
+.ct-grid>*{min-width:0}
+.ct-form{min-width:0;grid-template-columns:minmax(0,1fr)}
+.f2,.specs{grid-template-columns:repeat(2,minmax(0,1fr))}
+.chips{grid-template-columns:repeat(3,minmax(0,1fr))}
+.chip span{overflow-wrap:anywhere}
+html:not([data-l="zh"]) .chip span{padding:14px 18px;font-size:16px;line-height:1.35}
+html:not([data-l="zh"]) .inl.note>span{flex:0 0 auto}
+html.lat .specs{gap:22px 40px}
+@media (max-width:900px){.f2,.specs{grid-template-columns:minmax(0,1fr)}.chips{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.chips{grid-template-columns:minmax(0,1fr)}}
+html:not([data-l="zh"]) .a-copy h1,html:not([data-l="zh"]) .ct-left h1{font-size:clamp(28px,3.2vw,50px)}
+a.dot{cursor:pointer;color:inherit;text-decoration:none}
